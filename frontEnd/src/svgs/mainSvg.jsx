@@ -96,7 +96,7 @@ const SceneSVG = ({ transform, hoveredElement, sectionIndex }) => {
             <g
                 transform={transform}
                 style={{
-                    transition: 'transform 1s ',
+                    transition: 'transform 1s cubic-bezier(.50,0,.18,1)',
                     willChange: 'transform'
                 }}
             >

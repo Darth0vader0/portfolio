@@ -70,16 +70,57 @@ const Portfolio = () => {
       />
       
       {sectionIndex === 0 && (
-        <div className="fixed top-1/4 left-10 max-w-md  text-white rounded-xl p-8 z-20 shadow-2xl animate-slide-fade-in transition-opacity duration-2000">
-          <h1 className="text-3xl font-bold mb-2 text-green-400">Hi, I'm Kamal Singh</h1>
-          <h2 className="text-xl font-semibold mb-4">Frontend Developer from India 🇮🇳</h2>
-          <p className="text-base leading-relaxed">
-            I love building beautiful, interactive web experiences.<br />
-            Passionate about React, SVG animations, and creative coding.<br />
-            Always learning, always curious.<br />
-            Let's create something amazing together!
-          </p>
-        </div>
+         <div className="fixed top-1/4 left-10 max-w-md text-white rounded-xl p-8 z-20 shadow-2xl">
+      <style jsx>{`
+        @keyframes fadeInUp {
+          0% {
+            transform: translateY(30px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        
+        .fade-up-1 {
+          animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .fade-up-2 {
+          animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+        
+        .fade-up-3 {
+          animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+        
+        .fade-up-4 {
+          animation: fadeInUp 0.6s ease-out 0.6s both;
+        }
+      `}</style>
+      
+      <h1 className="text-3xl font-bold mb-2 text-green-400 fade-up-1">
+        Hi, I'm Kamal Majethiya 
+      </h1>
+      
+      <h2 className="text-xl font-semibold mb-4 fade-up-2">
+        MERN Stack Developer from India 🇮🇳
+      </h2>
+      
+      <p className="text-base leading-relaxed fade-up-3">
+        I love building beautiful, interactive web experiences.<br />
+        I create stunning projects that wow people.<br />
+        Always learning, always curious.<br />
+        Open to work opportunities.
+      </p>
+      
+      <div className="fade-up-4">
+        
+        <h3 className="mt-2">Say hello to my cat 🐱</h3>
+      </div>
+    </div>
+        
       )}
       {/* Status displays with Tailwind classes */}
       {hoveredElement && (
