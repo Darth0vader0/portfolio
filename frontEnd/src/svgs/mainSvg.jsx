@@ -1,7 +1,32 @@
 // components/SceneSVG.jsx
 import React from 'react';
 
+const catImages = [
+    '/cat/relexing.png',
+    '/cat/surprised.png',
+    '/cat/judging.png',
+    '/cat/myGod.png',
+    '/cat/run.png',
+    // Add more cat images if you want
+];
+const catImageStyles = [
+    //relexing
+    { x: 1571.78, y: 995.88, width: 84.19, height: 100.17 }, 
+    // For /cat/surprised
+    { x: 1571.78, y: 989.88, width: 84.19, height: 90.17 }, 
+    // For /cat/judging.png (move down and smaller)
+    { x: 1571.78, y: 976, width: 120, height: 135 },
+    // For /cat/myGod.png (move right)
+    { x: 1571, y: 980.88, width: 84, height: 101.17 },
+    //run
+    { x: 1571.78, y: 1015.88, width: 84.19, height: 100.17 }, 
+];
 const SceneSVG = ({ transform, hoveredElement, sectionIndex }) => {
+    const [catImageIndex, setCatImageIndex] = React.useState(0);
+
+    const handleCatRectClick = () => {
+        setCatImageIndex((prev) => (prev + 1) % catImages.length);
+    };
     return (
         <svg
             className="w-full h-full"
@@ -71,7 +96,7 @@ const SceneSVG = ({ transform, hoveredElement, sectionIndex }) => {
             <g
                 transform={transform}
                 style={{
-                    transition: 'transform 1s cubic-bezier(.50,0,.18,1)',
+                    transition: 'transform 1s ',
                     willChange: 'transform'
                 }}
             >
@@ -96,10 +121,10 @@ const SceneSVG = ({ transform, hoveredElement, sectionIndex }) => {
                                         rx="20" ry="20"
                                         className={`fill-black cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'profile' ? 'scale-105' : 'scale-100'}`}
                                         d="m 1773.6975,764.95267
-c 0,0 17.2747,2.91966 18.2479,15.08494 0.9732,12.16528 0,142.57706 0,142.57706
-l 0.2433,37.95566
-c 0,0 2.4331,30.4132 -17.0314,42.33517 -19.4644,11.922 -60.0964,16.0582 -61.7996,-50.12095 -1.7031,-66.17911 -2.433,-136.73772 -2.433,-136.73772 0,0 6.3259,-65.20589 62.7728,-51.09416
-z"
+                                           c 0,0 17.2747,2.91966 18.2479,15.08494 0.9732,12.16528 0,142.57706 0,142.57706
+                                           l 0.2433,37.95566
+                                           c 0,0 2.4331,30.4132 -17.0314,42.33517 -19.4644,11.922 -60.0964,16.0582 -61.7996,-50.12095 -1.7031,-66.17911 -2.433,-136.73772 -2.433,-136.73772 0,0 6.3259,-65.20589 62.7728,-51.09416
+                                           z"
                                     />
 
 
@@ -119,6 +144,28 @@ z"
 
                                 />
                             </g>
+                            <rect
+                                id="cat-rect"
+                                width="134.19354"
+                                height="112.17204"
+                                x="1571.7849"
+                                y="966.88171"
+                                className="cursor-pointer"
+                                fill='transparent'
+                                onClick={handleCatRectClick}
+                            />
+                            <image
+                                href={catImages[catImageIndex]}
+                                x={catImageStyles[catImageIndex].x}
+                                y={catImageStyles[catImageIndex].y}
+                                width={catImageStyles[catImageIndex].width}
+                                height={catImageStyles[catImageIndex].height}
+                                preserveAspectRatio="xMidYMid slice"
+                                style={{ pointerEvents: 'none' }}
+                            >
+                                <title>cat png</title>
+                            </image>
+
                         </>
                     ) : (
                         <>
@@ -140,17 +187,6 @@ z"
                     d="m 2028.6452,758.96774 18.7527,5.5914 0.4301,38.7957 -18.4947,-2.66667 z"
                 />
 
-                <rect
-                    className='fill-slate-50'
-                    id="rect14"
-                    width="134.19354"
-                    height="112.17204"
-                    x="1571.7849"
-                    y="966.88171"
-                    ry="10">
-                    <title
-                        id="title16">cat png</title>
-                </rect>
 
 
                 {/* section 2 skill section */}

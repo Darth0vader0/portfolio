@@ -8,11 +8,16 @@ export default {
     extend: {
       animation: {
         'fade-in': 'fadeIn 1s ease forwards',
+                'slide-fade-in': 'slide-fade-in 1s ease-out',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },
+        },
+         'slide-fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'none' },
         },
       },
 

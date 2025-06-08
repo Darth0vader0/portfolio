@@ -69,6 +69,18 @@ const Portfolio = () => {
         sectionIndex={sectionIndex}
       />
       
+      {sectionIndex === 0 && (
+        <div className="fixed top-1/4 left-10 max-w-md  text-white rounded-xl p-8 z-20 shadow-2xl animate-slide-fade-in transition-opacity duration-2000">
+          <h1 className="text-3xl font-bold mb-2 text-green-400">Hi, I'm Kamal Singh</h1>
+          <h2 className="text-xl font-semibold mb-4">Frontend Developer from India 🇮🇳</h2>
+          <p className="text-base leading-relaxed">
+            I love building beautiful, interactive web experiences.<br />
+            Passionate about React, SVG animations, and creative coding.<br />
+            Always learning, always curious.<br />
+            Let's create something amazing together!
+          </p>
+        </div>
+      )}
       {/* Status displays with Tailwind classes */}
       {hoveredElement && (
         <div className="fixed top-4 left-4 bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg z-10 font-medium shadow-lg backdrop-blur-sm">
