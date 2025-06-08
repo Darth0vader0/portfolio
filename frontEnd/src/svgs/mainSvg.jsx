@@ -9,7 +9,6 @@ const SceneSVG = ({ transform, hoveredElement, sectionIndex }) => {
             viewBox="0 0 4096 2304"
             xmlns="http://www.w3.org/2000/svg"
             style={{
-                backgroundImage: `url('background.jpeg')`,
                 backgroundSize: 'cover',
                 zIndex: 1
             }}
@@ -22,7 +21,7 @@ const SceneSVG = ({ transform, hoveredElement, sectionIndex }) => {
                     height="2304"
                 >
                     <image
-                        href="background.jpeg"
+                        href="extendedBack.png"
                         x="0"
                         y="0"
                         width="4096"
@@ -124,14 +123,14 @@ z"
                     ) : (
                         <>
                             <path
-                                className={`fill-black cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'profile' ? 'scale-105' : 'scale-100'}`} 
-                                        d="m 1773.6975,764.95267
+                                className={`fill-black cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'profile' ? 'scale-105' : 'scale-100'}`}
+                                d="m 1773.6975,764.95267
 c 0,0 17.2747,2.91966 18.2479,15.08494 0.9732,12.16528 0,142.57706 0,142.57706
 l 0.2433,37.95566
 c 0,0 2.4331,30.4132 -17.0314,42.33517 -19.4644,11.922 -60.0964,16.0582 -61.7996,-50.12095 -1.7031,-66.17911 -2.433,-136.73772 -2.433,-136.73772 0,0 6.3259,-65.20589 62.7728,-51.09416
 z"
 
-                                />
+                            />
                         </>
                     )
                 }
@@ -140,6 +139,18 @@ z"
                     className="fill-black"
                     d="m 2028.6452,758.96774 18.7527,5.5914 0.4301,38.7957 -18.4947,-2.66667 z"
                 />
+
+                <rect
+                    className='fill-slate-50'
+                    id="rect14"
+                    width="134.19354"
+                    height="112.17204"
+                    x="1571.7849"
+                    y="966.88171"
+                    ry="10">
+                    <title
+                        id="title16">cat png</title>
+                </rect>
 
 
                 {/* section 2 skill section */}
