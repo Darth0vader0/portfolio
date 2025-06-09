@@ -5,8 +5,8 @@ import SceneSVG from './svgs/mainSvg';
 const SECTION_TRANSFORMS = [
   'scale(3.4) translate(1300, 800)',
   'scale(3.5) translate(-1800, 1000)',
-  'scale(3.7) translate(-1400, -1000)',
   'scale(4.5) translate(2000, -900)',
+  'scale(3.7) translate(-1400, -1000)',
   'scale(4.5) translate(-1500, -2500)',
   'scale(4.5) translate(900, -2500)',
 ];

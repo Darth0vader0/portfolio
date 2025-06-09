@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // components/SceneSVG.jsx
 import React from 'react';
 import { SiHtml5, SiJavascript, SiReact, SiNodedotjs, SiMongodb, SiMysql, SiSocketdotio, SiWebrtc, SiAndroidstudio } from "react-icons/si";
@@ -12,7 +13,7 @@ const skillIconPositions = [
     { x: 2434, y: 975 }, // MySQL
     { x: 2342, y: 1017 }, // html
     { x: 2390, y: 1024 }, // WebRTC
-    { x: 2432, y: 1030}, // Android Studio
+    { x: 2432, y: 1030 }, // Android Studio
 ];
 const skillIcons = [
     SiMongodb,
@@ -63,6 +64,13 @@ const SceneSVG = ({ transformValues, hoveredElement, sectionIndex }) => {
             }}
         >
             <defs>
+                 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+    <feMerge>
+      <feMergeNode in="coloredBlur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
                 <pattern
                     id="bgPattern"
                     patternUnits="userSpaceOnUse"
@@ -146,7 +154,7 @@ const SceneSVG = ({ transformValues, hoveredElement, sectionIndex }) => {
 
                                     <path
                                         rx="20" ry="20"
-                                        className={`fill-black cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'profile' ? 'scale-105' : 'scale-100'}`}
+                                        className={`fill-transparent cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'profile' ? 'scale-105' : 'scale-100'}`}
                                         d="m 1773.6975,764.95267
                                            c 0,0 17.2747,2.91966 18.2479,15.08494 0.9732,12.16528 0,142.57706 0,142.57706
                                            l 0.2433,37.95566
@@ -197,12 +205,8 @@ const SceneSVG = ({ transformValues, hoveredElement, sectionIndex }) => {
                     ) : (
                         <>
                             <path
-                                className={`fill-black cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'profile' ? 'scale-105' : 'scale-100'}`}
-                                d="m 1773.6975,764.95267
-c 0,0 17.2747,2.91966 18.2479,15.08494 0.9732,12.16528 0,142.57706 0,142.57706
-l 0.2433,37.95566
-c 0,0 2.4331,30.4132 -17.0314,42.33517 -19.4644,11.922 -60.0964,16.0582 -61.7996,-50.12095 -1.7031,-66.17911 -2.433,-136.73772 -2.433,-136.73772 0,0 6.3259,-65.20589 62.7728,-51.09416
-z"
+                                className={`fill-transparent cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'profile' ? 'scale-105' : 'scale-100'}`}
+                                d="m 1773.6975,764.95267 c 0,0 17.2747,2.91966 18.2479,15.08494 0.9732,12.16528 0,142.57706 0,142.57706 l 0.2433,37.95566 c 0,0 2.4331,30.4132 -17.0314,42.33517 -19.4644,11.922 -60.0964,16.0582 -61.7996,-50.12095 -1.7031,-66.17911 -2.433,-136.73772 -2.433,-136.73772 0,0 6.3259,-65.20589 62.7728,-51.09416 z"
 
                             />
                         </>
@@ -219,58 +223,225 @@ z"
                 {/* section 2 skill section */}
 
                 {/* Skill Banner */}
-                <path
-                    className={`fill-green-500 cursor-pointer transition-opacity duration-200 ${hoveredElement === 'skillBanner' ? 'opacity-80' : 'opacity-60'
+
+                <motion.path
+                    className={`cursor-pointer transition-opacity duration-200 ${sectionIndex === 1
+                        ? `fill-green-500 ${hoveredElement === 'skillBanner' ? 'opacity-80' : 'opacity-60'}`
+                        : 'fill-transparent opacity-0'
                         }`}
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                        duration: 1,
+                        ease: "easeOut",
+                        delay: 1
+                    }}
                     d="m 2160.172,578.75267 v 128 l 290.4086,68.12903 3.4408,-116.30107 z"
                 >
                     <title>Skills Banner</title>
-                </path>
-
+                </motion.path>
                 {/* Adaptive Text */}
-                <path
-                    className={`fill-green-500 cursor-pointer transition-opacity duration-200 ${hoveredElement === 'adaptiveText' ? 'opacity-80' : 'opacity-60'
+                <motion.path
+                    className={`cursor-pointer transition-opacity duration-200 ${sectionIndex === 1
+                        ? `fill-green-500 ${hoveredElement === 'skillBanner' ? 'opacity-80' : 'opacity-60'}`
+                        : 'fill-transparent opacity-0'
                         }`}
-                    d="m 2570.3713,1152.7923 -1.4251,-381.35146 361.2665,98.71108 8.4318,341.50968 z"
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                        duration: 1,
+                        ease: "easeOut",
+                        delay: 1
+                    }}
+                    d="m 2568.9462,768.68817 367.4839,100.47312 0.9979,337.87761 -367.4495,-78.0927
+z"
+                >
+                    <title>Adaptive Text</title>
+                </motion.path>
+                <path
+                    className={`cursor-pointer transition-opacity duration-200 ${sectionIndex === 1
+                        ? `fill-green-700 ${hoveredElement === 'skillBanner' ? 'opacity-80' : 'opacity-60'}`
+                        : 'fill-transparent opacity-0'
+                        }`}
+                    d="m 2568.9462,768.68817 367.4839,100.47312 0.9979,337.87761 -367.4495,-78.0927
+z"
                 >
                     <title>Adaptive Text</title>
                 </path>
+
+
+                {sectionIndex === 1 && (
+                    <g transform="skewY(15)">
+                        <motion.text
+                            x={2630}
+                            y={120}
+                            fontSize="28"
+                            fontWeight="bold"
+                            fill="#fff"
+                            style={{
+                                fontFamily: "Segoe UI, Arial, sans-serif",
+                                textTransform: "uppercase",
+                                userSelect: "none",
+                                pointerEvents: "none",
+                                textShadow: "2px 2px 8px #000a"
+                            }}
+                            initial={{ y: 30, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{
+                                duration: 1,
+                                ease: "easeIn",
+                                delay: 1.2
+                            }}
+                        >
+                            agile & adaptive
+                        </motion.text>
+                        <motion.text
+                            x={2580}
+                            y={160}
+                            fontSize="20"
+                            fill="#fff"
+                            style={{
+                                fontFamily: "Segoe UI, Arial, sans-serif",
+                                userSelect: "none",
+                                pointerEvents: "none",
+                                textShadow: "2px 2px 8px #000a"
+                            }}
+                            initial={{ y: 30, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{
+                                duration: 1,
+                                ease: "easeIn",
+                                delay: 1.3
+                            }}
+                        >
+                            I can work with different tech stacks
+                        </motion.text>
+                        <motion.text
+                            x={2600}
+                            y={200}
+                            fontSize="20"
+                            fill="#fff"
+                            style={{
+                                fontFamily: "Segoe UI, Arial, sans-serif",
+                                userSelect: "none",
+                                pointerEvents: "none",
+                                textShadow: "2px 2px 8px #000a"
+                            }}
+                            initial={{ y: 30, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{
+                                duration: 1,
+                                ease: "easeIn",
+                                delay: 1.4
+                            }}
+                        >
+                            <tspan x={2580} dy="0">•I have worked with various tech stack</tspan>
+                            <tspan x={2589} dy="28">based on the term project </tspan>
+                            <tspan x={2580} dy="28">•right now stuck with MERN </tspan>
+                            <tspan x={2580} dy="28">•leader in every hackathon+project</tspan>
+                            <tspan x={2580} dy="28">•led the project to success</tspan> 
+                            <tspan x={2580} dy="28">•currently working on building</tspan> 
+                            <tspan x={2589} dy="28">my own 2D-metaverse with phaser</tspan> 
+
+
+                        </motion.text>
+                    </g>
+                )}
+
+                {sectionIndex === 1 && (
+                    <g
+
+                        transform=' skewY(15) translate(-40,-10)'
+                    >
+                        <motion.text
+                            x={2220}
+                            y={55}
+                            fontSize="30"
+                            fontWeight="bold"
+                            fill="#fff"
+                            style={{
+                                fontFamily: "Segoe UI, Arial, sans-serif",
+                                textTransform: "uppercase",
+                                userSelect: "none",
+                                pointerEvents: "none",
+                                textShadow: "2px 2px 8px #000a"
+                            }}
+
+                            initial={{ y: 30, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{
+                                duration: 1,
+                                ease: "easeIn",
+                                delay: 0.5
+                            }}
+                        >
+                            technologies &
+                        </motion.text>
+                        <motion.text
+                            x={2220}
+                            y={105}
+                            fontSize="25"
+                            fontWeight="bold"
+                            fill="#fff"
+                            style={{
+                                fontFamily: "Segoe UI, Arial, sans-serif",
+                                textTransform: "uppercase",
+                                userSelect: "none",
+                                pointerEvents: "none",
+                                textShadow: "2px 2px 8px #000a"
+                            }}
+                            transform="skewY(15) translate(-40,-10)"
+                            initial={{ y: 30, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{
+                                duration: 1,
+                                ease: "easeIn",
+                                delay: 0.6 // slightly after the first line
+                            }}
+                        >
+                            skills i work with
+                        </motion.text>
+                    </g>
+                )}
+
+
                 {/* Skills Section */}
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num, idx) => {
-    const Icon = skillIcons[idx];
-    return (
-        <React.Fragment key={`skill${num}`}>
-            <path
-                className={`fill-transparent cursor-pointer transition-opacity duration-200 ${hoveredElement === `skill${num}` ? 'opacity-80' : 'opacity-100'}`}
-                d={getSkillPath(num)}
-            />
-            {sectionIndex === 1 && Icon && (
-                <foreignObject
-                    x={skillIconPositions[idx].x - 18}
-                    y={skillIconPositions[idx].y - 16}
-                    width={34}
-                    height={34}
-                    style={{ pointerEvents: 'none' }}
-                >
-                    <div
-                        style={{    
-                            width: 36,
-                            height: 36,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            transform: "perspective(80px) rotateY(28deg) skewY(15deg)",
-                            // You can tweak the perspective, rotateY, and skewY for different angles
-                        }}
-                    >
-                        <Icon size={32} color="#ffffff" style={{ filter: "drop-shadow(0 1px 2px #0008)" }} />
-                    </div>
-                </foreignObject>
-            )}
-        </React.Fragment>
-    );
-})}
-
+                    const Icon = skillIcons[idx];
+                    return (
+                        <React.Fragment key={`skill${num}`}>
+                            <path
+                                className={`fill-transparent cursor-pointer transition-opacity duration-200 ${hoveredElement === `skill${num}` ? 'opacity-80' : 'opacity-100'}`}
+                                d={getSkillPath(num)}
+                            />
+                            {sectionIndex === 1 && Icon && (
+                                <g
+                                    transform={`
+                        translate(${skillIconPositions[idx].x - 16}, ${skillIconPositions[idx].y - 18})
+                        skewY(15)
+                        scale(1)
+                    `}
+                                    style={{ pointerEvents: 'none' }}
+                                >
+                                    <motion.g
+                                        initial={{ y: 30, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        transition={{
+                                            duration: 0.6,
+                                            ease: "easeOut",
+                                            delay: 0.1 + idx * 0.08
+                                        }}
+                                    >
+                                        {/* Render the icon as SVG path */}
+                                        <Icon 
+                                        
+                                        size={32} color="#fefac4" style={{ filter:"drop-shadow(0 0 0px #aaffaa) drop-shadow(0 0 16px #eedc5a)" }} />
+                                    </motion.g>
+                                </g>
+                            )}
+                        </React.Fragment>
+                    );
+                })}
 
                 {/* section 3 project section */}
 
