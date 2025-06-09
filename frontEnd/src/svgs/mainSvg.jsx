@@ -1,6 +1,30 @@
 // components/SceneSVG.jsx
 import React from 'react';
+import { SiHtml5, SiJavascript, SiReact, SiNodedotjs, SiMongodb, SiMysql, SiSocketdotio, SiWebrtc, SiAndroidstudio } from "react-icons/si";
 import { motion } from 'framer-motion';
+
+const skillIconPositions = [
+    { x: 2345, y: 915 }, //mongoDB
+    { x: 2390, y: 920 }, // JavaScript
+    { x: 2430, y: 930 }, // React
+    { x: 2343, y: 962 }, // Node.js
+    { x: 2390, y: 970 }, // socket.io
+    { x: 2434, y: 975 }, // MySQL
+    { x: 2342, y: 1017 }, // html
+    { x: 2390, y: 1024 }, // WebRTC
+    { x: 2432, y: 1030}, // Android Studio
+];
+const skillIcons = [
+    SiMongodb,
+    SiJavascript,
+    SiReact,
+    SiNodedotjs,
+    SiSocketdotio,
+    SiMysql,
+    SiHtml5,
+    SiWebrtc,
+    SiAndroidstudio,
+];
 const catImages = [
     '/cat/relexing.png',
     '/cat/surprised.png',
@@ -26,7 +50,7 @@ const SceneSVG = ({ transformValues, hoveredElement, sectionIndex }) => {
     const handleCatRectClick = () => {
         setCatImageIndex((prev) => (prev + 1) % catImages.length);
     };
-     const { scale = 1, x = 0, y = 0 } = transformValues || {};
+    const { scale = 1, x = 0, y = 0 } = transformValues || {};
     return (
         <svg
             className="w-full h-full"
@@ -54,6 +78,7 @@ const SceneSVG = ({ transformValues, hoveredElement, sectionIndex }) => {
                         preserveAspectRatio="xMidYMid slice"
                     />
                 </pattern>
+
                 <linearGradient id="linearGradient58">
                     <stop className="stop-color-yellow-100" style={{ stopOpacity: 1 }} offset="0" />
                     <stop className="stop-color-yellow-100" style={{ stopOpacity: 0 }} offset="1" />
@@ -95,13 +120,13 @@ const SceneSVG = ({ transformValues, hoveredElement, sectionIndex }) => {
 
 
             <motion.g
-        animate={{ scale, x, y }}
-        transformOrigin="0 0"
-        transition={{
-          duration: 1,
-          ease: [0.5, 0, 0.18, 1],
-        }}
-      >
+                animate={{ scale, x, y }}
+                transformOrigin="0 0"
+                transition={{
+                    duration: 1,
+                    ease: [0.5, 0, 0.18, 1],
+                }}
+            >
                 {/* Background as a rect so it zooms too */}
                 <rect
                     x="0"
@@ -211,15 +236,40 @@ z"
                     <title>Adaptive Text</title>
                 </path>
                 {/* Skills Section */}
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-                    <path
-                        key={`skill${num}`}
-                        className={`fill-black cursor-pointer transition-opacity duration-200 ${hoveredElement === `skill${num}` ? 'opacity-80' : 'opacity-100'
-                            }`}
-                        d={getSkillPath(num)}
-
-                    />
-                ))}
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num, idx) => {
+    const Icon = skillIcons[idx];
+    return (
+        <React.Fragment key={`skill${num}`}>
+            <path
+                className={`fill-transparent cursor-pointer transition-opacity duration-200 ${hoveredElement === `skill${num}` ? 'opacity-80' : 'opacity-100'}`}
+                d={getSkillPath(num)}
+            />
+            {sectionIndex === 1 && Icon && (
+                <foreignObject
+                    x={skillIconPositions[idx].x - 18}
+                    y={skillIconPositions[idx].y - 16}
+                    width={34}
+                    height={34}
+                    style={{ pointerEvents: 'none' }}
+                >
+                    <div
+                        style={{    
+                            width: 36,
+                            height: 36,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transform: "perspective(80px) rotateY(28deg) skewY(15deg)",
+                            // You can tweak the perspective, rotateY, and skewY for different angles
+                        }}
+                    >
+                        <Icon size={32} color="#ffffff" style={{ filter: "drop-shadow(0 1px 2px #0008)" }} />
+                    </div>
+                </foreignObject>
+            )}
+        </React.Fragment>
+    );
+})}
 
 
                 {/* section 3 project section */}
