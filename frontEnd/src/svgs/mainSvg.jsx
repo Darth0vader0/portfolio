@@ -1,6 +1,6 @@
 // components/SceneSVG.jsx
 import React from 'react';
-
+import { motion } from 'framer-motion';
 const catImages = [
     '/cat/relexing.png',
     '/cat/surprised.png',
@@ -11,22 +11,22 @@ const catImages = [
 ];
 const catImageStyles = [
     //relexing
-    { x: 1571.78, y: 995.88, width: 84.19, height: 100.17 }, 
+    { x: 1571.78, y: 995.88, width: 84.19, height: 100.17 },
     // For /cat/surprised
-    { x: 1571.78, y: 989.88, width: 84.19, height: 90.17 }, 
+    { x: 1571.78, y: 989.88, width: 84.19, height: 90.17 },
     // For /cat/judging.png (move down and smaller)
     { x: 1571.78, y: 976, width: 120, height: 135 },
     // For /cat/myGod.png (move right)
     { x: 1571, y: 980.88, width: 84, height: 101.17 },
     //run
-    { x: 1571.78, y: 1015.88, width: 84.19, height: 100.17 }, 
+    { x: 1571.78, y: 1015.88, width: 84.19, height: 100.17 },
 ];
-const SceneSVG = ({ transform, hoveredElement, sectionIndex }) => {
+const SceneSVG = ({ transformValues, hoveredElement, sectionIndex }) => {
     const [catImageIndex, setCatImageIndex] = React.useState(0);
-
     const handleCatRectClick = () => {
         setCatImageIndex((prev) => (prev + 1) % catImages.length);
     };
+     const { scale = 1, x = 0, y = 0 } = transformValues || {};
     return (
         <svg
             className="w-full h-full"
@@ -93,13 +93,15 @@ const SceneSVG = ({ transform, hoveredElement, sectionIndex }) => {
                 </linearGradient>
             </defs>
 
-            <g
-                transform={transform}
-                style={{
-                    transition: 'transform 1s cubic-bezier(.50,0,.18,1)',
-                    willChange: 'transform'
-                }}
-            >
+
+            <motion.g
+        animate={{ scale, x, y }}
+        transformOrigin="0 0"
+        transition={{
+          duration: 1,
+          ease: [0.5, 0, 0.18, 1],
+        }}
+      >
                 {/* Background as a rect so it zooms too */}
                 <rect
                     x="0"
@@ -357,7 +359,7 @@ z"
 
                 <path className="opacity-100 fill-black" d="m 1805.8138,1791.4588 53.0406,4.1362 0.9732,39.1722 -54.7437,-3.163 z" />
                 <path className="opacity-100 fill-black" d="m 1701.9223,1716.2774 c 35.036,-0.4866 35.036,-0.4866 35.036,-0.4866 l 0.73,67.6389 c -35.036,0.2433 -35.036,0.2433 -35.036,0.2433 z" />
-            </g>
+            </motion.g>
         </svg>
     );
 };
