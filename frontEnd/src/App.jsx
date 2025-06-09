@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import SceneSVG from './svgs/mainSvg';
-
+import Fireflies from './components/fireFlies';
 const SECTION_TRANSFORMS = [
   'scale(3.4) translate(1300, 800)',
   'scale(3.5) translate(-1800, 1000)',
@@ -63,6 +63,7 @@ const Portfolio = () => {
 
   return (
     <div className="">
+       <Fireflies />
       <SceneSVG
         transformValues={transformValues}
         hoveredElement={hoveredElement}
