@@ -462,8 +462,45 @@ z"
                     d="m 1277.2473,1465.9785 c 36.4731,2.5806 36.4731,2.5806 36.4731,2.5806 v 60.3871 c 0,0 0.6882,3.7849 -4.3011,4.3011 -4.9892,0.5161 -31.4838,0.6881 -31.4838,0.6881 z"
                 />
 
-                <path className="opacity-100 fill-black" d="m 1680.1465,1367.3772 61.5563,-3.5279 0.4866,31.3864 -62.1646,4.9878 z" />
-
+                <path className="opacity-100 fill-transparent" d="m 1680.1465,1367.3772 61.5563,-3.5279 0.4866,31.3864 -62.1646,4.9878 z" rx='2' ry='2'  >
+                    <title>click me </title>
+   </path>
+{sectionIndex === 2 && (
+    <>
+     <rect
+      x={1685.1475 + 61.5566 / 2 - 38} // center - half width
+      y={1370.3772 + 18 - 20}           // center - half height
+      width={65}
+      height={32}
+      rx={10}
+      fill="#222"
+      opacity={0.85}
+      transform="rotate(-3,1710,1385)"
+      style={{
+        cursor:'pointer',
+      }}
+    />
+  <text
+    x={1680.1475 + 61.5566 / 2}
+    y={1365.3772 + 18}
+    textAnchor="middle"
+    alignmentBaseline="middle"
+    fontSize="22"
+    fontWeight="bold"
+    fill="#fff"
+     transform="rotate(-1,1710,1385)"
+    style={{
+        
+        background:'black',
+      pointerEvents: 'none',
+      userSelect: 'none',
+      textShadow: '0 1px 8px #000'
+    }}
+  >
+    open
+  </text>
+  </>
+)}
                 {/* Project Details Rectangle */}
                 <rect
                     className={`fill-green-500 cursor-pointer transition-opacity duration-200 rounded-lg ${hoveredElement === 'projectDetails' ? 'opacity-50' : 'opacity-30'
@@ -472,8 +509,7 @@ z"
                     height="268.04272"
                     x="1374.5583"
                     y="1271.0021"
-                    ry="19.595598"
-                    rx="19.595598"
+
                 />
                 {/* Project Window */}
                 <path
@@ -484,7 +520,7 @@ z"
                 />
 
                 <path
-                    className={`fill-green-500 cursor-pointer transition-transform duration-200 ${hoveredElement === 'upArrow' ? '-translate-y-1' : 'translate-y-0'
+                    className={`fill-transparent  transition-transform duration-200 ${hoveredElement === 'upArrow' ? '-translate-y-1' : 'translate-y-0'
                         }`}
                     d="m 1686.7157,1220.664 c 0,0 -14.9632,3.1629 -5.8393,-11.8004 9.124,-14.9633 9.124,-14.9633 9.124,-14.9633 0,0 -0.8516,-7.0558 20.6809,-9.6105 21.5326,-2.5547 31.3865,-6.326 25.5471,2.1897 -5.8393,8.5157 -11.9219,20.5593 -11.9219,20.5593 0,0 -0.9733,8.0291 -10.0972,9.2457 -9.124,1.2165 -27.4936,4.3795 -27.4936,4.3795 z"
 
@@ -500,14 +536,62 @@ z"
                 </path>
                 {/* Interactive arrows and banners */}
                 <path
-                    className={`fill-green-500 opacity-80 cursor-pointer transition-transform duration-200 ${hoveredElement === 'downArrow' ? 'translate-y-1' : 'translate-y-0'
+                    className={`fill-transparent opacity-80  transition-transform duration-200 ${hoveredElement === 'downArrow' ? 'translate-y-1' : 'translate-y-0'
                         }`}
                     d="m 1671.7525,1441.8287 42.5784,-4.8661 0.2433,22.3841 -42.0918,1.2165 z"
 
                 >
                     <title>down arrow</title>
                 </path>
-
+               {sectionIndex === 2 && (
+  <>
+    {/* Up Arrow Folded Band */}
+  <g transform="translate(1682,1190) scale(1.5)">
+  {/* Folded band shape */}
+  <path
+    d="
+      M -18,6
+      L -10,-8
+      Q 0,-16 10,-8
+      L 18,6
+      Q 0,2 -18,6
+      Z
+    "
+    fill="#61dafb"
+    opacity="0.22"
+    style={{
+      filter: "blur(1.5px)"
+    }}
+  />
+  {/* Up Arrow Polygon */}
+  <polygon
+    points="2,14 18,-2 22,12"
+    fill="#fff"
+    stroke="#8cc84b"
+    strokeWidth="2"
+    style={{
+        cursor:'pointer',
+      filter: "drop-shadow(0 0 8px #61dafb88)"
+    }}
+  />
+</g>
+{/* Down Arrow Folded Band */}
+<g transform="translate(1680,1440) scale(1.5)">
+  
+  {/* Down Arrow Polygon */}
+  <polygon
+    points="0,2 10,10 19,1"
+    fill="#fff"
+    stroke="#8cc84b"
+    strokeWidth="2"
+    style={{
+        cursor:'pointer',
+      filter: "drop-shadow(0 0 10px #61dafb88)"
+    }}
+  />
+</g>
+  </>
+)}
 
                 {/* section 4 work experience  */}
                 {/* Work Experience Section */}
