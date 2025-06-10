@@ -435,7 +435,7 @@ z"
                                         {/* Render the icon as SVG path */}
                                         <Icon 
                                         
-                                        size={32} color="#fefac4" style={{ filter:"drop-shadow(0 0 0px #aaffaa) drop-shadow(0 0 16px #eedc5a)" }} />
+                                        size={32} color="#000" style={{ filter:"drop-shadow(0 0 0px #aaffaa) drop-shadow(0 0 16px #eedc5a)" }} />
                                     </motion.g>
                                 </g>
                             )}
