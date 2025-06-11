@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import SceneSVG from './svgs/mainSvg';
 import Fireflies from './components/fireFlies';
+import DynamicGlassProjectCard from './components/project'
 const SECTION_TRANSFORMS = [
   'scale(3.4) translate(1300, 800)',
   'scale(3.5) translate(-1800, 850)',
@@ -10,6 +11,29 @@ const SECTION_TRANSFORMS = [
   'scale(4.5) translate(-1500, -2500)',
   'scale(4.5) translate(900, -2500)',
 ];
+ const projects = [
+    {
+      title: "SoulSync",
+      subtitle: "Just like Discord",
+      techStack: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
+      description: "A real-time chat and collaboration platform inspired by Discord. Features channels, DMs, voice, and more.",
+      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=200&fit=crop&crop=center"
+    },
+    {
+      title: "Melodify", 
+      subtitle: "YouTube/Spotify Video & MP3 Downloader",
+      techStack: ['React', 'Express', 'yt-dlp', 'Tailwind',],
+      description: "Download music and videos from YouTube and Spotify as MP3 or MP4. Fast, clean, and easy to use.",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=200&fit=crop&crop=center"
+    },
+    {
+      title: "2D Metaverse",
+      subtitle: "Office Environment", 
+      techStack: ['Phaser', 'React', 'Node.js', 'Socket.io',"MongoDb"],
+      description: "A 2D virtual office space for remote teams. Walk, chat, and collaborate in a pixel-art world.",
+      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=200&fit=crop&crop=center"
+    }
+  ];
 
 const NUM_SECTIONS = SECTION_TRANSFORMS.length;
 
@@ -17,7 +41,8 @@ const Portfolio = () => {
   const [hoveredElement, setHoveredElement] = useState(null);
   const [clickedElement, setClickedElement] = useState(null);
   const [sectionIndex, setSectionIndex] = useState(-1); // -1 = no zoom
-
+  
+    const [selectedNumber, setSelectedNumber] = React.useState(1); // default to 1
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowUp') {
@@ -69,6 +94,8 @@ const Portfolio = () => {
         hoveredElement={hoveredElement}
         setHoveredElement={setHoveredElement}
         sectionIndex={sectionIndex}
+        selectedNumber={selectedNumber}
+        setSelectedNumber={setSelectedNumber}
       />
 
       {sectionIndex === 0 && (
@@ -125,6 +152,99 @@ const Portfolio = () => {
           </div>
         </div>
       )}
+      {/* Project Card (shows when sectionIndex === 2) */}
+{sectionIndex === 2 && (
+  <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
+      
+      
+      {sectionIndex === 2 && (
+        <div className="fixed top-1/2 left-[30%] z-30 -translate-x-1/2 -translate-y-1/2">
+          {projects.map((project, idx) =>
+            selectedNumber === idx + 1 ? (
+              <div
+                key={project.title}
+                className="w-[300px] sm:w-[360px] glass-card rounded-3xl shadow-2xl shadow-black/20 p-8 fade-up-card relative"
+              >
+                {/* Sparkle Effects */}
+                <div className="sparkle"></div>
+                <div className="sparkle"></div>
+                <div className="sparkle"></div>
+                <div className="sparkle"></div>
+                <div className="sparkle"></div>
+                
+                {/* Shimmer Effect */}
+                <div className="shimmer-overlay rounded-3xl"></div>
+                
+                {/* Project Image */}
+                <div className="mb-6 image-container">
+                  <img
+                    src={project.image}
+                    alt={project.title + " screenshot"}
+                    className="rounded-xl border border-white/20 shadow-lg w-full object-cover h-40"
+                  />
+                </div>
+                
+                {/* Project Title */}
+                <div className="mb-6">
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent mb-2">
+                    {project.title}
+                  </h2>
+                  <p className="text-white/70 text-sm uppercase tracking-wider font-medium">
+                    {project.subtitle}
+                  </p>
+                </div>
+                
+                {/* Tech Stack */}
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {project.techStack.map((tech, techIdx) => (
+                    <span
+                      key={tech}
+                      className="px-4 py-2 tech-tag rounded-full border border-white/20 text-white text-sm font-medium"
+                      style={{ animationDelay: `${techIdx * 0.1}s` }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                
+                {/* Description */}
+                <div className="mb-4">
+                  <p className="text-white/90 text-base leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+                
+                {/* Action Buttons */}
+                <div className="flex gap-3 mt-6">
+                  <button className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                    View Project
+                  </button>
+                  <button className="flex-1 bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl border border-white/20 transition-all duration-300 transform hover:scale-105">
+                    Source Code
+                  </button>
+                </div>
+              </div>
+            ) : null
+          )}
+        </div>
+      )}
+      
+      {/* Navigation Controls */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-4">
+        {[1, 2, 3].map(num => (
+          <button
+            key={num}
+            onClick={() => setSelectedNumber(num)}
+            className={`w-4 h-4 rounded-full transition-all duration-300 ${
+              selectedNumber === num 
+                ? 'bg-white shadow-lg shadow-white/30' 
+                : 'bg-white/30 hover:bg-white/50'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+)}
 
       {hoveredElement && (
         <div className="fixed top-4 left-4 bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg z-10 font-medium shadow-lg backdrop-blur-sm">

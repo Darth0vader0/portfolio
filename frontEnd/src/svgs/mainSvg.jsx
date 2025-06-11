@@ -46,8 +46,14 @@ const catImageStyles = [
     //run
     { x: 1571.78, y: 1015.88, width: 84.19, height: 100.17 },
 ];
-const SceneSVG = ({ transformValues, hoveredElement, sectionIndex }) => {
+const SceneSVG = ({ transformValues, hoveredElement, sectionIndex, selectedNumber, setSelectedNumber }) => {
     const [catImageIndex, setCatImageIndex] = React.useState(0);
+    const handleArrowUp = () => {
+        setSelectedNumber(prev => prev > 1 ? prev - 1 : prev);
+    };
+    const handleArrowDown = () => {
+        setSelectedNumber(prev => prev < 5 ? prev + 1 : prev);
+    };
     const handleCatRectClick = () => {
         setCatImageIndex((prev) => (prev + 1) % catImages.length);
     };
@@ -64,13 +70,13 @@ const SceneSVG = ({ transformValues, hoveredElement, sectionIndex }) => {
             }}
         >
             <defs>
-                 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-    <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
-    <feMerge>
-      <feMergeNode in="coloredBlur"/>
-      <feMergeNode in="SourceGraphic"/>
-    </feMerge>
-  </filter>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+                    <feMerge>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
                 <pattern
                     id="bgPattern"
                     patternUnits="userSpaceOnUse"
@@ -339,9 +345,9 @@ z"
                             <tspan x={2589} dy="28">based on the term project </tspan>
                             <tspan x={2580} dy="28">•right now stuck with MERN </tspan>
                             <tspan x={2580} dy="28">•leader in every hackathon+project</tspan>
-                            <tspan x={2580} dy="28">•led the project to success</tspan> 
-                            <tspan x={2580} dy="28">•currently working on building</tspan> 
-                            <tspan x={2589} dy="28">my own 2D-metaverse with phaser</tspan> 
+                            <tspan x={2580} dy="28">•led the project to success</tspan>
+                            <tspan x={2580} dy="28">•currently working on building</tspan>
+                            <tspan x={2589} dy="28">my own 2D-metaverse with phaser</tspan>
 
 
                         </motion.text>
@@ -433,9 +439,9 @@ z"
                                         }}
                                     >
                                         {/* Render the icon as SVG path */}
-                                        <Icon 
-                                        
-                                        size={32} color="#000" style={{ filter:"drop-shadow(0 0 0px #aaffaa) drop-shadow(0 0 16px #eedc5a)" }} />
+                                        <Icon
+
+                                            size={32} color="#000" style={{ filter: "drop-shadow(0 0 0px #aaffaa) drop-shadow(0 0 16px #eedc5a)" }} />
                                     </motion.g>
                                 </g>
                             )}
@@ -464,60 +470,57 @@ z"
 
                 <path className="opacity-100 fill-transparent" d="m 1680.1465,1367.3772 61.5563,-3.5279 0.4866,31.3864 -62.1646,4.9878 z" rx='2' ry='2'  >
                     <title>click me </title>
-   </path>
-{sectionIndex === 2 && (
-    <>
-     <rect
-      x={1685.1475 + 61.5566 / 2 - 38} // center - half width
-      y={1370.3772 + 18 - 20}           // center - half height
-      width={65}
-      height={32}
-      rx={10}
-      fill="#222"
-      opacity={0.85}
-      transform="rotate(-3,1710,1385)"
-      style={{
-        cursor:'pointer',
-      }}
-    />
-  <text
-    x={1680.1475 + 61.5566 / 2}
-    y={1365.3772 + 18}
-    textAnchor="middle"
-    alignmentBaseline="middle"
-    fontSize="22"
-    fontWeight="bold"
-    fill="#fff"
-     transform="rotate(-1,1710,1385)"
-    style={{
-        
-        background:'black',
-      pointerEvents: 'none',
-      userSelect: 'none',
-      textShadow: '0 1px 8px #000'
-    }}
-  >
-    open
-  </text>
-  </>
-)}
-                {/* Project Details Rectangle */}
-                <rect
-                    className={`fill-green-500 cursor-pointer transition-opacity duration-200 rounded-lg ${hoveredElement === 'projectDetails' ? 'opacity-50' : 'opacity-30'
-                        }`}
-                    width="179.99475"
-                    height="268.04272"
-                    x="1374.5583"
-                    y="1271.0021"
+                </path>
 
-                />
+                {/* Project Details Rectangle */}
+              
                 {/* Project Window */}
                 <path
-                    className={`fill-green-500 cursor-pointer transition-opacity duration-200 ${hoveredElement === 'projectWindow' ? 'opacity-80' : 'opacity-60'
+                    className={`fill-black cursor-pointer transition-opacity duration-200 ${hoveredElement === 'projectWindow' ? 'opacity-80' : 'opacity-60'
                         }`}
                     d="m 1637.5053,1378.4086 -0.3441,-55.3979 c 0,0 -5.1612,-48.5161 19.613,-52.3011 24.7741,-3.7849 84.9892,-11.0107 84.9892,-11.0107 l 28.5591,-3.4409 c 0,0 20.3011,-2.0645 20.3011,18.9248 0,20.9892 -1.0322,87.3978 -1.0322,87.3978 0,0 -5.5054,10.6667 -23.0538,11.3548 -17.5484,0.6882 -17.5484,-0.344 -17.5484,-0.344 l -0.6882,-11.699 -26.1505,1.3764 c 0,0 -6.8817,-34.7527 -20.6452,-33.0323 -13.7634,1.7205 -19.2688,19.6129 -19.2688,19.6129 l -2.4086,15.828 -1.3763,9.9785 -5.5054,2.4086 -3.785,7.5699 -11.3548,2.4086 c 0,0 -9.9785,-12.043 -20.3011,-9.6344 z"
 
                 />
+                {sectionIndex === 2 && (
+                    <g style={{ transform: "rotate(-3deg)", transformOrigin: "1710px 1385px" }}>
+                        {/* Number positions */}
+                        {[
+                            { n: 1, x: 1655, y: 1310 },
+                            { n: 2, x: 1710, y: 1325 },
+                            { n: 3, x: 1655, y: 1370 },
+                            { n: 4, x: 1765, y: 1297 },
+                            { n: 5, x: 1765, y: 1360 },
+                        ].map(({ n, x, y }) => (
+                            <g key={n}>
+                                {selectedNumber === n && (
+                                    <rect
+                                        x={x - 18}
+                                        y={y - 29}
+                                        width={35}
+                                        height={35}
+                                        rx={0} // square corners
+                                        fill="none"
+                                        stroke="#22c55e" // Tailwind green-500
+                                        strokeWidth={4}
+                                        opacity={1}
+                                        style={{ pointerEvents: 'none' }}
+                                    />
+                                )}
+                                <text
+                                    x={x}
+                                    y={y}
+                                    fontSize="32"
+                                    fill="#fff"
+                                    fontWeight="bold"
+                                    textAnchor="middle"
+                                    style={{ textShadow: "0 1px 8px #000", pointerEvents: 'none' }}
+                                >
+                                    {n}
+                                </text>
+                            </g>
+                        ))}
+                    </g>
+                )}
 
                 <path
                     className={`fill-transparent  transition-transform duration-200 ${hoveredElement === 'upArrow' ? '-translate-y-1' : 'translate-y-0'
@@ -543,55 +546,104 @@ z"
                 >
                     <title>down arrow</title>
                 </path>
-               {sectionIndex === 2 && (
-  <>
-    {/* Up Arrow Folded Band */}
-  <g transform="translate(1682,1190) scale(1.5)">
-  {/* Folded band shape */}
-  <path
-    d="
-      M -18,6
-      L -10,-8
-      Q 0,-16 10,-8
-      L 18,6
-      Q 0,2 -18,6
-      Z
-    "
-    fill="#61dafb"
-    opacity="0.22"
-    style={{
-      filter: "blur(1.5px)"
-    }}
-  />
-  {/* Up Arrow Polygon */}
-  <polygon
-    points="2,14 18,-2 22,12"
-    fill="#fff"
-    stroke="#8cc84b"
-    strokeWidth="2"
-    style={{
-        cursor:'pointer',
-      filter: "drop-shadow(0 0 8px #61dafb88)"
-    }}
-  />
-</g>
-{/* Down Arrow Folded Band */}
-<g transform="translate(1680,1440) scale(1.5)">
-  
-  {/* Down Arrow Polygon */}
-  <polygon
-    points="0,2 10,10 19,1"
-    fill="#fff"
-    stroke="#8cc84b"
-    strokeWidth="2"
-    style={{
-        cursor:'pointer',
-      filter: "drop-shadow(0 0 10px #61dafb88)"
-    }}
-  />
-</g>
-  </>
-)}
+
+                {sectionIndex === 2 && (
+                    <>
+                        {/* Animated Button Background */}
+                        <motion.g
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 0.85, y: 0 }}
+                            transition={{ duration: 0.7, ease: "easeOut" }}
+
+                        >
+                            <rect
+                                x={1685.1475 + 61.5566 / 2 - 38}
+                                y={1370.3772 + 18 - 20}
+                                width={65}
+                                height={32}
+                                rx={10}
+                                fill="#222"
+                                opacity={0.95}
+                                style={{
+                                    cursor: 'pointer',
+                                    transform: "rotate(-3deg)", transformOrigin: "1710px 1385px"
+                                }}
+                            />
+                        </motion.g>
+                        {/* Animated Button Text */}
+                        <motion.text
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+                            x={1680.1475 + 61.5566 / 2}
+                            y={1365.3772 + 18}
+                            textAnchor="middle"
+                            alignmentBaseline="middle"
+                            fontSize="22"
+                            fontWeight="bold"
+                            fill="#fff"
+                            transform="rotate(-3,1710,1385)"
+                            style={{
+                                pointerEvents: 'none',
+                                userSelect: 'none',
+                                textShadow: '0 1px 8px #000'
+                            }}
+                        >
+                            open
+                        </motion.text>
+
+                        {/* Up Arrow Folded Band */}
+                        <g
+                            className={`coming-up${sectionIndex === 2 ? ' active' : ''}`}
+                            transform="translate(1682,1190) scale(1.5)"
+                        >
+                            <path
+                                d="
+                                        M -18,6
+                                        L -10,-8
+                                        Q 0,-16 10,-8
+                                        L 18,6
+                                        Q 0,2 -18,6
+                                        Z
+                                        "
+                                fill="#61dafb"
+                                opacity="0.22"
+                                style={{
+                                    filter: "blur(1.5px)"
+                                }}
+                            />
+                            <polygon
+                                points="2,14 18,-2 22,12"
+                                fill="#fff"
+                                stroke="#8cc84b"
+                                strokeWidth="2"
+                                onClick={handleArrowUp}
+                                style={{
+                                    cursor: 'pointer',
+                                    filter: "drop-shadow(0 0 8px #61dafb88)"
+                                }}
+                            />
+                        </g>
+
+                        {/* Down Arrow Folded Band */}
+                        <g
+                            className={`coming-up${sectionIndex === 2 ? ' active' : ''}`}
+                            transform="translate(1680,1440) scale(1.5)"
+                        >
+                            <polygon
+                                points="1,3 9 ,12 20,1"
+                                fill="#fff"
+                                stroke="#8cc84b"
+                                strokeWidth="2"
+                                onClick={handleArrowDown}
+                                style={{
+                                    cursor: 'pointer',
+                                    filter: "drop-shadow(0 0 10px #61dafb88)"
+                                }}
+                            />
+                        </g>
+                    </>
+                )}
 
                 {/* section 4 work experience  */}
                 {/* Work Experience Section */}
