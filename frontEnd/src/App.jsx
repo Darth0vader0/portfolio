@@ -17,21 +17,27 @@ const SECTION_TRANSFORMS = [
       subtitle: "Just like Discord",
       techStack: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
       description: "A real-time chat and collaboration platform inspired by Discord. Features channels, DMs, voice, and more.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=200&fit=crop&crop=center"
+      image: "/project/soulSync.png",
+      github:'https://github.com/Darth0vader0/SoulSync',
+      projectLink:"https://soul-sync-omega.vercel.app/login"
     },
     {
       title: "Melodify", 
       subtitle: "YouTube/Spotify Video & MP3 Downloader",
       techStack: ['React', 'Express', 'yt-dlp', 'Tailwind',],
       description: "Download music and videos from YouTube and Spotify as MP3 or MP4. Fast, clean, and easy to use.",
-      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=200&fit=crop&crop=center"
+      image: "/project/melodify.png",
+      github:"https://github.com/Darth0vader0/Melodify-mernStack",
+      projectLink:"https://melodify-wine.vercel.app/login"
     },
     {
       title: "2D Metaverse",
       subtitle: "Office Environment", 
       techStack: ['Phaser', 'React', 'Node.js', 'Socket.io',"MongoDb"],
       description: "A 2D virtual office space for remote teams. Walk, chat, and collaborate in a pixel-art world.",
-      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=200&fit=crop&crop=center"
+      image: "/project/2dMetaverse.png",
+      github:'https://github.com/Darth0vader0/2dMetaverse-mern',
+      projectLink:"https://2d-metaverse-mern.vercel.app/home"
     }
   ];
 
@@ -216,12 +222,12 @@ const Portfolio = () => {
                 
                 {/* Action Buttons */}
                 <div className="flex gap-3 mt-6">
-                  <button className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                  <a href={project.projectLink} target='blank' className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all cursor-pointer duration-300 transform hover:scale-105 hover:shadow-lg">
                     View Project
-                  </button>
-                  <button className="flex-1 bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl border border-white/20 transition-all duration-300 transform hover:scale-105">
+                  </a>
+                  <a href={project.github} target='blank' className="flex-1 bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl border border-white/20 transition-all duration-300 transform hover:scale-105">
                     Source Code
-                  </button>
+                  </a>
                 </div>
               </div>
             ) : null

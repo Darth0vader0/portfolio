@@ -3,7 +3,7 @@
 import React from 'react';
 import { SiHtml5, SiJavascript, SiReact, SiNodedotjs, SiMongodb, SiMysql, SiSocketdotio, SiWebrtc, SiAndroidstudio } from "react-icons/si";
 import { motion } from 'framer-motion';
-
+import { AnimatePresence } from "framer-motion";
 const skillIconPositions = [
     { x: 2345, y: 915 }, //mongoDB
     { x: 2390, y: 920 }, // JavaScript
@@ -48,11 +48,15 @@ const catImageStyles = [
 ];
 const SceneSVG = ({ transformValues, hoveredElement, sectionIndex, selectedNumber, setSelectedNumber }) => {
     const [catImageIndex, setCatImageIndex] = React.useState(0);
+    const prevNumber = React.useRef(selectedNumber);
+React.useEffect(() => {
+  prevNumber.current = selectedNumber;
+}, [selectedNumber]);
     const handleArrowUp = () => {
         setSelectedNumber(prev => prev > 1 ? prev - 1 : prev);
     };
     const handleArrowDown = () => {
-        setSelectedNumber(prev => prev < 5 ? prev + 1 : prev);
+        setSelectedNumber(prev => prev < 3 ? prev + 1 : prev);
     };
     const handleCatRectClick = () => {
         setCatImageIndex((prev) => (prev + 1) % catImages.length);
@@ -481,46 +485,33 @@ z"
                     d="m 1637.5053,1378.4086 -0.3441,-55.3979 c 0,0 -5.1612,-48.5161 19.613,-52.3011 24.7741,-3.7849 84.9892,-11.0107 84.9892,-11.0107 l 28.5591,-3.4409 c 0,0 20.3011,-2.0645 20.3011,18.9248 0,20.9892 -1.0322,87.3978 -1.0322,87.3978 0,0 -5.5054,10.6667 -23.0538,11.3548 -17.5484,0.6882 -17.5484,-0.344 -17.5484,-0.344 l -0.6882,-11.699 -26.1505,1.3764 c 0,0 -6.8817,-34.7527 -20.6452,-33.0323 -13.7634,1.7205 -19.2688,19.6129 -19.2688,19.6129 l -2.4086,15.828 -1.3763,9.9785 -5.5054,2.4086 -3.785,7.5699 -11.3548,2.4086 c 0,0 -9.9785,-12.043 -20.3011,-9.6344 z"
 
                 />
-                {sectionIndex === 2 && (
-                    <g style={{ transform: "rotate(-3deg)", transformOrigin: "1710px 1385px" }}>
-                        {/* Number positions */}
-                        {[
-                            { n: 1, x: 1655, y: 1310 },
-                            { n: 2, x: 1710, y: 1325 },
-                            { n: 3, x: 1655, y: 1370 },
-                            { n: 4, x: 1765, y: 1297 },
-                            { n: 5, x: 1765, y: 1360 },
-                        ].map(({ n, x, y }) => (
-                            <g key={n}>
-                                {selectedNumber === n && (
-                                    <rect
-                                        x={x - 18}
-                                        y={y - 29}
-                                        width={35}
-                                        height={35}
-                                        rx={0} // square corners
-                                        fill="none"
-                                        stroke="#22c55e" // Tailwind green-500
-                                        strokeWidth={4}
-                                        opacity={1}
-                                        style={{ pointerEvents: 'none' }}
-                                    />
-                                )}
-                                <text
-                                    x={x}
-                                    y={y}
-                                    fontSize="32"
-                                    fill="#fff"
-                                    fontWeight="bold"
-                                    textAnchor="middle"
-                                    style={{ textShadow: "0 1px 8px #000", pointerEvents: 'none' }}
-                                >
-                                    {n}
-                                </text>
-                            </g>
-                        ))}
-                    </g>
-                )}
+     
+
+{sectionIndex === 2 && (
+  <g style={{ transform: "rotate(-2deg)", transformOrigin: "1710px 1385px" }}>
+    <AnimatePresence initial={false} mode="wait">
+      <motion.text
+        key={selectedNumber}
+        x={1710}
+        y={1330}
+        fontSize="48"
+        fill="#fff"
+        fontWeight="bold"
+        textAnchor="middle"
+        style={{ textShadow: "0 5px 8px #000", pointerEvents: 'none' }}
+        initial={{ y: selectedNumber > prevNumber ? 60 : -60, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: selectedNumber > prevNumber ? -60 : 60, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      >
+        {selectedNumber}
+      </motion.text>
+      {/* Green border */}
+     
+    </AnimatePresence>
+  </g>
+)}
+
 
                 <path
                     className={`fill-transparent  transition-transform duration-200 ${hoveredElement === 'upArrow' ? '-translate-y-1' : 'translate-y-0'
@@ -556,7 +547,7 @@ z"
                             transition={{ duration: 0.7, ease: "easeOut" }}
 
                         >
-                            <rect
+                            {/* <rect
                                 x={1685.1475 + 61.5566 / 2 - 38}
                                 y={1370.3772 + 18 - 20}
                                 width={65}
@@ -568,10 +559,10 @@ z"
                                     cursor: 'pointer',
                                     transform: "rotate(-3deg)", transformOrigin: "1710px 1385px"
                                 }}
-                            />
+                            /> */}
                         </motion.g>
                         {/* Animated Button Text */}
-                        <motion.text
+                        {/* <motion.text
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
@@ -590,7 +581,7 @@ z"
                             }}
                         >
                             open
-                        </motion.text>
+                        </motion.text> */}
 
                         {/* Up Arrow Folded Band */}
                         <g
@@ -614,7 +605,7 @@ z"
                             />
                             <polygon
                                 points="2,14 18,-2 22,12"
-                                fill="#fff"
+                                fill="#00000"
                                 stroke="#8cc84b"
                                 strokeWidth="2"
                                 onClick={handleArrowUp}
@@ -631,8 +622,8 @@ z"
                             transform="translate(1680,1440) scale(1.5)"
                         >
                             <polygon
-                                points="1,3 9 ,12 20,1"
-                                fill="#fff"
+                                points="-2,3 9 ,12 20,1"
+                                fill="#000000"
                                 stroke="#8cc84b"
                                 strokeWidth="2"
                                 onClick={handleArrowDown}
