@@ -179,11 +179,11 @@ React.useEffect(() => {
                             <g className="opacity-0 animate-fade-in delay-[1000ms]  ">
                                 <image
 
-                                    href="/myprofilepic.jpg"
+                                    href="/portfolioimage.jpg"
                                     x="1700"
                                     y="740"
                                     width="110"
-                                    height='280'
+                                    height='320'
                                     clipPath="url(#clipProfile)"
                                     preserveAspectRatio="xMidYMid slice"
 
