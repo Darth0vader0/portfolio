@@ -482,7 +482,10 @@ z"
                 <path
                     className={`fill-black cursor-pointer transition-opacity duration-200 ${hoveredElement === 'projectWindow' ? 'opacity-80' : 'opacity-60'
                         }`}
-                    d="m 1637.5053,1378.4086 -0.3441,-55.3979 c 0,0 -5.1612,-48.5161 19.613,-52.3011 24.7741,-3.7849 84.9892,-11.0107 84.9892,-11.0107 l 28.5591,-3.4409 c 0,0 20.3011,-2.0645 20.3011,18.9248 0,20.9892 -1.0322,87.3978 -1.0322,87.3978 0,0 -5.5054,10.6667 -23.0538,11.3548 -17.5484,0.6882 -17.5484,-0.344 -17.5484,-0.344 l -0.6882,-11.699 -26.1505,1.3764 c 0,0 -6.8817,-34.7527 -20.6452,-33.0323 -13.7634,1.7205 -19.2688,19.6129 -19.2688,19.6129 l -2.4086,15.828 -1.3763,9.9785 -5.5054,2.4086 -3.785,7.5699 -11.3548,2.4086 c 0,0 -9.9785,-12.043 -20.3011,-9.6344 z"
+                    d="m 1637.6897,1378.0827 -1.7031,-67.8823
+c 0,0 -2.9197,-36.0092 22.3841,-39.4155 25.3038,-3.4062 110.4607,-14.1117 110.4607,-14.1117 0,0 22.3841,-5.1094 22.6274,20.1944 0.2433,25.3038 -1.7031,93.186 -1.7031,93.186
+l -153.0392,12.6519
+z"
 
                 />
      
@@ -639,7 +642,7 @@ z"
                 {/* section 4 work experience  */}
                 {/* Work Experience Section */}
                 <path
-                    className={`fill-green-500 cursor-pointer transition-opacity duration-200 ${hoveredElement === 'work' ? 'opacity-80' : 'opacity-60'
+                    className={`fill-transparent cursor-pointer transition-opacity duration-200 ${hoveredElement === 'work' ? 'opacity-80' : 'opacity-60'
                         }`}
                     d="m 2336.2831,1650.5269 1.3763,-369.5484 -348.9032,95.6559 -8.1432,330.9398 z"
 
@@ -649,7 +652,7 @@ z"
 
                 {/* Education Section */}
                 <path
-                    className={`fill-green-500 cursor-pointer transition-opacity duration-200 ${hoveredElement === 'education' ? 'opacity-80' : 'opacity-60'
+                    className={`fill-transparent cursor-pointer transition-opacity duration-200 ${hoveredElement === 'education' ? 'opacity-80' : 'opacity-60'
                         }`}
                     d="m 2584.3579,1670.4782 -1.3763,-369.5484 348.9032,95.6559 8.1432,330.9398 z"
 
