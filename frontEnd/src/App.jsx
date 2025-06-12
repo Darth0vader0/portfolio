@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import SceneSVG from './svgs/mainSvg';
 import Fireflies from './components/fireFlies';
-import DynamicGlassProjectCard from './components/project'
+import { GraduationCap, Briefcase, Calendar } from 'lucide-react';
+import ExperienceCard from './components/workEdu';
 const SECTION_TRANSFORMS = [
   'scale(3.4) translate(1300, 800)',
   'scale(3.5) translate(-1800, 850)',
@@ -11,6 +12,7 @@ const SECTION_TRANSFORMS = [
   'scale(4.5) translate(-1500, -2500)',
   'scale(4.5) translate(900, -2500)',
 ];
+
 const projects = [
   {
     title: "SoulSync",
@@ -49,6 +51,7 @@ const Portfolio = () => {
   const [sectionIndex, setSectionIndex] = useState(-1); // -1 = no zoom
   const [navHint, setNavHint] = useState("Press ↑ (up arrow)");
   const [selectedNumber, setSelectedNumber] = React.useState(1); // default to 1
+    const [selectedWorkEdu, setSelectedWorkEdu] = useState(0);
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowUp') {
@@ -179,6 +182,8 @@ const Portfolio = () => {
           </div>
         </div>
       )}
+  
+   
       {/* Project Card (shows when sectionIndex === 2) */}
       {sectionIndex === 2 && (
         <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
@@ -255,6 +260,7 @@ const Portfolio = () => {
               )}
             </div>
           )}
+    
 
           {/* Navigation Controls */}
           <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-4">
@@ -272,6 +278,7 @@ const Portfolio = () => {
         </div>
       )}
 
+       
       {hoveredElement && (
         <div className="fixed top-4 left-4 bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg z-10 font-medium shadow-lg backdrop-blur-sm">
           <span className="text-sm">Hovering:</span>

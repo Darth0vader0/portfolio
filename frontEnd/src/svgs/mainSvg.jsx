@@ -543,6 +543,7 @@ z"
 
                 {sectionIndex === 2 && (
                     <>
+                        
                         {/* Animated Button Background */}
                         <motion.g
                             initial={{ opacity: 0, y: 30 }}
@@ -642,7 +643,7 @@ z"
                 {/* section 4 work experience  */}
                 {/* Work Experience Section */}
                 <path
-                    className={`fill-transparent cursor-pointer transition-opacity duration-200 ${hoveredElement === 'work' ? 'opacity-80' : 'opacity-60'
+                    className={`fill-green-500 cursor-pointer transition-opacity duration-200 ${hoveredElement === 'work' ? 'opacity-80' : 'opacity-60'
                         }`}
                     d="m 2336.2831,1650.5269 1.3763,-369.5484 -348.9032,95.6559 -8.1432,330.9398 z"
 
@@ -652,13 +653,71 @@ z"
 
                 {/* Education Section */}
                 <path
-                    className={`fill-transparent cursor-pointer transition-opacity duration-200 ${hoveredElement === 'education' ? 'opacity-80' : 'opacity-60'
+                    className={`fill-green-500 cursor-pointer transition-opacity duration-200 ${hoveredElement === 'education' ? 'opacity-80' : 'opacity-60'
                         }`}
                     d="m 2584.3579,1670.4782 -1.3763,-369.5484 348.9032,95.6559 8.1432,330.9398 z"
 
                 >
                     <title>Education</title>
                 </path>
+               
+
+{sectionIndex === 3 && (
+  <>
+    {/* Work Experience Text (skewX) */}
+    <g transform="skewY(-12)">
+      <motion.text
+        x={2000}
+        y={1830}
+        fontSize="34"
+        fontWeight="bold"
+        fill="#fff"
+        style={{
+          fontFamily: "Segoe UI, Arial, sans-serif",
+          textTransform: "uppercase",
+          userSelect: "none",
+          pointerEvents: "none",
+          textShadow: "2px 2px 8px #000a"
+        }}
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 1,
+          ease: "easeIn",
+          delay: 0.2
+        }}
+      >
+        Work Experience
+      </motion.text>
+    </g>
+    {/* Education Text (skewY) */}
+ <g transform="skewY(12)">
+  <motion.text
+    x={2600}
+    y={800}
+    fontSize="38"
+    fontWeight="bold"
+    fill="#fff"
+    style={{
+      fontFamily: "Segoe UI, Arial, sans-serif",
+      textTransform: "uppercase",
+      userSelect: "none",
+      pointerEvents: "none",
+      textShadow: "2px 2px 8px #000a"
+    }}
+    initial={{ y: 30, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{
+      duration: 1,
+      ease: "easeIn",
+      delay: 0.4
+    }}
+  >
+    Education
+  </motion.text>
+</g>
+  </>
+)}
                 {/* Work Experience Logo */}
                 <path
                     className={`fill-black cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'workLogo' ? 'scale-110' : 'scale-100'
