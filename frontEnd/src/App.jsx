@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import SceneSVG from './svgs/mainSvg';
 import Fireflies from './components/fireFlies';
 import { GraduationCap, Briefcase, Calendar } from 'lucide-react';
-import ExperienceCard from './components/workEdu';
+
 const SECTION_TRANSFORMS = [
   'scale(3.4) translate(1300, 800)',
   'scale(3.5) translate(-1800, 850)',

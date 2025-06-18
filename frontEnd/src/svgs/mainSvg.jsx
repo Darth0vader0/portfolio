@@ -49,9 +49,9 @@ const catImageStyles = [
 const SceneSVG = ({ transformValues, hoveredElement, sectionIndex, selectedNumber, setSelectedNumber }) => {
     const [catImageIndex, setCatImageIndex] = React.useState(0);
     const prevNumber = React.useRef(selectedNumber);
-React.useEffect(() => {
-  prevNumber.current = selectedNumber;
-}, [selectedNumber]);
+    React.useEffect(() => {
+        prevNumber.current = selectedNumber;
+    }, [selectedNumber]);
     const handleArrowUp = () => {
         setSelectedNumber(prev => prev > 1 ? prev - 1 : prev);
     };
@@ -477,7 +477,7 @@ z"
                 </path>
 
                 {/* Project Details Rectangle */}
-              
+
                 {/* Project Window */}
                 <path
                     className={`fill-black cursor-pointer transition-opacity duration-200 ${hoveredElement === 'projectWindow' ? 'opacity-80' : 'opacity-60'
@@ -488,32 +488,32 @@ l -153.0392,12.6519
 z"
 
                 />
-     
 
-{sectionIndex === 2 && (
-  <g style={{ transform: "rotate(-2deg)", transformOrigin: "1710px 1385px" }}>
-    <AnimatePresence initial={false} mode="wait">
-      <motion.text
-        key={selectedNumber}
-        x={1710}
-        y={1330}
-        fontSize="48"
-        fill="#fff"
-        fontWeight="bold"
-        textAnchor="middle"
-        style={{ textShadow: "0 5px 8px #000", pointerEvents: 'none' }}
-        initial={{ y: selectedNumber > prevNumber ? 60 : -60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: selectedNumber > prevNumber ? -60 : 60, opacity: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      >
-        {selectedNumber}
-      </motion.text>
-      {/* Green border */}
-     
-    </AnimatePresence>
-  </g>
-)}
+
+                {sectionIndex === 2 && (
+                    <g style={{ transform: "rotate(-2deg)", transformOrigin: "1710px 1385px" }}>
+                        <AnimatePresence initial={false} mode="wait">
+                            <motion.text
+                                key={selectedNumber}
+                                x={1710}
+                                y={1330}
+                                fontSize="48"
+                                fill="#fff"
+                                fontWeight="bold"
+                                textAnchor="middle"
+                                style={{ textShadow: "0 5px 8px #000", pointerEvents: 'none' }}
+                                initial={{ y: selectedNumber > prevNumber ? 60 : -60, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: selectedNumber > prevNumber ? -60 : 60, opacity: 0 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            >
+                                {selectedNumber}
+                            </motion.text>
+                            {/* Green border */}
+
+                        </AnimatePresence>
+                    </g>
+                )}
 
 
                 <path
@@ -543,7 +543,7 @@ z"
 
                 {sectionIndex === 2 && (
                     <>
-                        
+
                         {/* Animated Button Background */}
                         <motion.g
                             initial={{ opacity: 0, y: 30 }}
@@ -643,7 +643,7 @@ z"
                 {/* section 4 work experience  */}
                 {/* Work Experience Section */}
                 <path
-                    className={`fill-green-500 cursor-pointer transition-opacity duration-200 ${hoveredElement === 'work' ? 'opacity-80' : 'opacity-60'
+                    className={`${sectionIndex===3?'fill-green-500':'fill-transparent'} cursor-pointer transition-opacity duration-200 ${hoveredElement === 'work' ? 'opacity-80' : 'opacity-60'
                         }`}
                     d="m 2336.2831,1650.5269 1.3763,-369.5484 -348.9032,95.6559 -8.1432,330.9398 z"
 
@@ -653,74 +653,143 @@ z"
 
                 {/* Education Section */}
                 <path
-                    className={`fill-green-500 cursor-pointer transition-opacity duration-200 ${hoveredElement === 'education' ? 'opacity-80' : 'opacity-60'
+                    className={`${sectionIndex===3?'fill-green-500':'fill-transparent'} cursor-pointer transition-opacity duration-200 ${hoveredElement === 'education' ? 'opacity-80' : 'opacity-60'
                         }`}
                     d="m 2584.3579,1670.4782 -1.3763,-369.5484 348.9032,95.6559 8.1432,330.9398 z"
 
                 >
                     <title>Education</title>
                 </path>
-               
 
-{sectionIndex === 3 && (
-  <>
-    {/* Work Experience Text (skewX) */}
-    <g transform="skewY(-12)">
-      <motion.text
-        x={2000}
-        y={1830}
-        fontSize="34"
-        fontWeight="bold"
-        fill="#fff"
-        style={{
-          fontFamily: "Segoe UI, Arial, sans-serif",
-          textTransform: "uppercase",
-          userSelect: "none",
-          pointerEvents: "none",
-          textShadow: "2px 2px 8px #000a"
-        }}
-        initial={{ y: 30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{
-          duration: 1,
-          ease: "easeIn",
-          delay: 0.2
-        }}
-      >
-        Work Experience
-      </motion.text>
-    </g>
-    {/* Education Text (skewY) */}
- <g transform="skewY(12)">
-  <motion.text
-    x={2600}
-    y={800}
-    fontSize="38"
-    fontWeight="bold"
-    fill="#fff"
-    style={{
-      fontFamily: "Segoe UI, Arial, sans-serif",
-      textTransform: "uppercase",
-      userSelect: "none",
-      pointerEvents: "none",
-      textShadow: "2px 2px 8px #000a"
-    }}
-    initial={{ y: 30, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{
-      duration: 1,
-      ease: "easeIn",
-      delay: 0.4
-    }}
-  >
-    Education
-  </motion.text>
-</g>
-  </>
-)}
+
+                {sectionIndex === 3 && (
+                    <>
+                        {/* Work Experience Text (skewX) */}
+                        <g transform="skewY(-15)">
+                           
+                            <motion.text
+                                x={2000}
+                                y={1940}
+                                fontSize="30"
+                                fontWeight="bold"
+                                fill="#fff"
+                                style={{
+                                    fontFamily: "Segoe UI, Arial, sans-serif",
+                                    textTransform: "uppercase",
+                                    userSelect: "none",
+                                    pointerEvents: "none",
+                                    textShadow: "2px 2px 8px #000a"
+                                }}
+                                initial={{ y: 30, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 1,
+                                    ease: "easeIn",
+                                    delay: 0.2
+                                }}
+                            >
+                                Work Experience
+                            </motion.text>
+                            <motion.text
+                                x={2000}
+                                y={2010}
+                                fontSize="18"
+                                fill="#fff"
+                                style={{
+                                    fontFamily: "Segoe UI, Arial, sans-serif",
+                                    userSelect: "none",
+                                    pointerEvents: "none",
+
+                                }}
+                                initial={{ y: 30, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 1,
+                                    ease: "easeIn",
+                                    delay: 0.6
+                                }}
+                            >
+
+                                <tspan x={2000} y={1968}>•Full Stack Developer </tspan>
+                                <tspan x={2000} dy="22"> at Semicolon Solution, Surat</tspan>
+
+                                <tspan x={2000} y={2018}>•Part-time mathematics teacer  </tspan>
+                                <tspan x={2000} dy="22"> dronacharya acedamy, ahmedabad</tspan>
+                            </motion.text>
+                        </g>
+                        {/* Education Text (skewY) */}
+                        <g transform="skewY(15)">
+                            <image
+                                href="/education.png" // <-- Replace with your logo path
+                                x={2450}
+                                y={695}
+                                width={85}
+                                height={100}
+                                style={{ pointerEvents: "none" }}
+                            />
+                             <image
+                                href="/workexperience.png" // <-- Replace with your logo path
+                                x={2380}
+                                y={700}
+                                width={100}
+                                height={100}
+                                style={{ pointerEvents: "none" }}
+                            />
+                            <motion.text
+                                x={2600}
+                                y={640}
+                                fontSize="30"
+                                fontWeight="bold"
+                                fill="#fff"
+                                style={{
+                                    fontFamily: "Segoe UI, Arial, sans-serif",
+                                    textTransform: "uppercase",
+                                    userSelect: "none",
+                                    pointerEvents: "none",
+                                    textShadow: "2px 2px 8px #000a"
+                                }}
+                                initial={{ y: 30, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 1,
+                                    ease: "easeIn",
+                                    delay: 0.4
+                                }}
+                            >
+                                Education
+                            </motion.text>
+                            <motion.text
+                                x={2600}
+                                y={680}
+                                fontSize="18"
+                                fill="#fff"
+                                style={{
+                                    fontFamily: "Segoe UI, Arial, sans-serif",
+                                    userSelect: "none",
+                                    pointerEvents: "none"
+                                }}
+                                initial={{ y: 30, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    duration: 1,
+                                    ease: "easeIn",
+                                    delay: 0.7
+                                }}
+                            >
+                                <tspan x={2600} y={680}>• HHC & SSC from Surat </tspan>
+
+
+                                <tspan x={2600} y={712}>• Bechalor of Engineering from   </tspan>
+                                <tspan x={2600} dy="22">vishwakarma govt engg college</tspan>
+                                <tspan x={2600} y={757}>• CGPA : 7.41  </tspan>
+
+                            </motion.text>
+                        </g>
+                    </>
+                )}
                 {/* Work Experience Logo */}
                 <path
-                    className={`fill-black cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'workLogo' ? 'scale-110' : 'scale-100'
+                    className={`fill-transparent cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'workLogo' ? 'scale-110' : 'scale-100'
                         }`}
                     d="m 2398.5062,1422.2426 -0.6083,-52.3106 c 0,0 -1.2165,-15.085 4.3795,-15.5716 5.5961,-0.4866 53.8922,4.7445 53.8922,4.7445 0,0 3.0413,-2.1898 2.798,10.2188 -0.2433,12.4086 -0.3649,80.5341 -0.3649,80.5341 0,0 -17.883,0.365 -25.3038,-5.8393 -7.4208,-6.2043 -6.2043,-31.7514 -6.2043,-31.7514 0,0 -18.7345,-1.2165 -19.2211,-0.9732 -0.4866,0.2433 -1.5815,4.2578 -1.8248,8.394 -0.2433,4.1362 -7.5425,2.5547 -7.5425,2.5547 z"
 
@@ -729,7 +798,7 @@ z"
                 </path>
                 {/* Click Education/Work */}
                 <path
-                    className={`fill-balc-500 cursor-pointer transition-opacity duration-200 ${hoveredElement === 'clickEduWork' ? 'opacity-80' : 'opacity-60'
+                    className={`fill-transparent cursor-pointer transition-opacity duration-200 ${hoveredElement === 'clickEduWork' ? 'opacity-80' : 'opacity-60'
                         }`}
                     d="m 2445.4193,1507.7849 c 0,0 -2.4086,-9.9785 6.5376,-9.2903 8.9463,0.6882 48.5162,-1.3764 50.9248,2.7527 2.4086,4.129 2.4086,10.6666 2.4086,10.6666 l -3.785,15.828 -4.129,6.5376 -57.4624,-0.3441 4.129,-9.9784 z"
 
@@ -737,7 +806,7 @@ z"
 
                 {/* Education Logo */}
                 <path
-                    className={`fill-black cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'eduLogo' ? 'scale-110' : 'scale-100'
+                    className={`fill-transparent cursor-pointer transition-transform duration-200 origin-center ${hoveredElement === 'eduLogo' ? 'scale-110' : 'scale-100'
                         }`}
                     d="m 2471.9845,1361.2946 19.4644,1.4598 c 0,0 17.7613,2.9197 20.681,21.6542 2.9197,18.7346 2.4331,49.3911 2.4331,49.3911 0,0 -15.3283,3.1629 -15.3283,7.2991 0,4.1362 -14.1117,-5.596 -15.5715,-10.7054 -1.4599,-5.1094 -9.489,-6.326 -9.7323,0.2433 -0.2433,6.5692 -1.9464,-69.3421 -1.9464,-69.3421 z"
 
