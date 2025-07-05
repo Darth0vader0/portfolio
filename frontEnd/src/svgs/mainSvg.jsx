@@ -713,7 +713,7 @@ z"
                                 <tspan x={2000} y={1968}>•Full Stack Developer </tspan>
                                 <tspan x={2000} dy="22"> at Semicolon Solution, Surat</tspan>
 
-                                <tspan x={2000} y={2018}>•Part-time mathematics teacer  </tspan>
+                                <tspan x={2000} y={2018}>•Part-time mathematics teacher  </tspan>
                                 <tspan x={2000} dy="22"> dronacharya acedamy, ahmedabad</tspan>
                             </motion.text>
                         </g>
@@ -776,7 +776,7 @@ z"
                                     delay: 0.7
                                 }}
                             >
-                                <tspan x={2600} y={680}>• HHC & SSC from Surat </tspan>
+                                <tspan x={2600} y={680}>• HSC & SSC from Surat </tspan>
 
 
                                 <tspan x={2600} y={712}>• Bechalor of Engineering from   </tspan>
