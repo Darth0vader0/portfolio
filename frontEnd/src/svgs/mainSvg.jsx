@@ -3,7 +3,27 @@
 import React from 'react';
 import { SiHtml5, SiJavascript, SiReact, SiNodedotjs, SiMongodb, SiMysql, SiSocketdotio, SiWebrtc, SiAndroidstudio } from "react-icons/si";
 import { motion } from 'framer-motion';
+import { SiGithub, SiTwitter, SiLinkedin, SiGmail, SiInstagram } from "react-icons/si";
 import { AnimatePresence } from "framer-motion";
+
+const contactIcons = [
+    SiGithub,
+    SiTwitter,
+    SiLinkedin,
+    SiGmail,
+    SiInstagram,
+    // Add more if you have more paths
+  ];
+  
+  const contactIconPositions = [
+    { x: 2508, y: 1600 }, // adjust these to match your contact paths visually
+    { x: 2334, y: 1651 },
+    { x: 2389, y: 1652 },
+    { x: 2300, y: 1707 },
+    { x: 2334, y: 1707 },
+    { x: 2389, y: 1706 },
+  ];
+
 const skillIconPositions = [
     { x: 2345, y: 915 }, //mongoDB
     { x: 2390, y: 920 }, // JavaScript
@@ -15,6 +35,10 @@ const skillIconPositions = [
     { x: 2390, y: 1024 }, // WebRTC
     { x: 2432, y: 1030 }, // Android Studio
 ];
+
+const contactPositions= [
+
+]
 const skillIcons = [
     SiMongodb,
     SiJavascript,
@@ -565,27 +589,7 @@ z"
                                 }}
                             /> */}
                         </motion.g>
-                        {/* Animated Button Text */}
-                        {/* <motion.text
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-                            x={1680.1475 + 61.5566 / 2}
-                            y={1365.3772 + 18}
-                            textAnchor="middle"
-                            alignmentBaseline="middle"
-                            fontSize="22"
-                            fontWeight="bold"
-                            fill="#fff"
-                            transform="rotate(-3,1710,1385)"
-                            style={{
-                                pointerEvents: 'none',
-                                userSelect: 'none',
-                                textShadow: '0 1px 8px #000'
-                            }}
-                        >
-                            open
-                        </motion.text> */}
+                     
 
                         {/* Up Arrow Folded Band */}
                         <g
@@ -826,6 +830,29 @@ z"
 
                     />
                 ))}
+                {sectionIndex === 4 && contactIcons.map((Icon, idx) => (
+  <g
+    key={`contact-icon-${idx}`}
+    transform={`
+      translate(${contactIconPositions[idx].x - 16}, ${contactIconPositions[idx].y - 18})
+      skewY(15)
+      scale(1)
+    `}
+    style={{ pointerEvents: 'none' }}
+  >
+    <motion.g
+      initial={{ y: 30, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeOut",
+        delay: 0.1 + idx * 0.08
+      }}
+    >
+      <Icon size={32} color="#000" style={{ filter: "drop-shadow(0 0 0px #aaffaa) drop-shadow(0 0 16px #eedc5a)" }} />
+    </motion.g>
+  </g>
+))}
 
 
 
