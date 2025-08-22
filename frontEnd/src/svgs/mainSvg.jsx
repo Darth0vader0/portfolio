@@ -1,19 +1,11 @@
 /* eslint-disable no-unused-vars */
 // components/SceneSVG.jsx
 import React from 'react';
-import { SiHtml5, SiJavascript, SiReact, SiNodedotjs, SiMongodb, SiMysql, SiSocketdotio, SiWebrtc, SiAndroidstudio, Si } from "react-icons/si";
+import { SiHtml5, SiJavascript, SiReact, SiNodedotjs, SiMongodb, SiMysql, SiSocketdotio, SiWebrtc, SiAndroidstudio } from "react-icons/si";
 import { motion } from 'framer-motion';
-import { SiGithub, SiTwitter, SiLinkedin, SiGmail, SiInstagram } from "react-icons/si";
 import { AnimatePresence } from "framer-motion";
 
-const contactIcons = [
-    SiGithub,
-    SiTwitter,
-    SiLinkedin,
-    SiGmail,
-    SiInstagram,
-    // Add more if you have more paths
-  ];
+
   
   const contactIconPositions = [
     { x: 2508, y: 1600 }, // adjust these to match your contact paths visually
@@ -829,29 +821,6 @@ z"
 
                     />
                 ))}
-                {sectionIndex === 4 && contactIcons.map((Icon, idx) => (
-  <g
-    key={`contact-icon-${idx}`}
-    transform={`
-      translate(${contactIconPositions[idx].x - 16}, ${contactIconPositions[idx].y - 18})
-      skewY(15)
-      scale(1)
-    `}
-    style={{ pointerEvents: 'none' }}
-  >
-    <motion.g
-      initial={{ y: 30, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 0.6,
-        ease: "easeOut",
-        delay: 0.1 + idx * 0.08
-      }}
-    >
-      <Icon size={32} color="#000" style={{ filter: "drop-shadow(0 0 0px #aaffaa) drop-shadow(0 0 16px #eedc5a)" }} />
-    </motion.g>
-  </g>
-))}
 
 
 
