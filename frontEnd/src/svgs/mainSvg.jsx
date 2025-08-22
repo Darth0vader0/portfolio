@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // components/SceneSVG.jsx
 import React from 'react';
-import { SiHtml5, SiJavascript, SiReact, SiNodedotjs, SiMongodb, SiMysql, SiSocketdotio, SiWebrtc, SiAndroidstudio } from "react-icons/si";
+import { SiHtml5, SiJavascript, SiReact, SiNodedotjs, SiMongodb, SiMysql, SiSocketdotio, SiWebrtc, SiAndroidstudio, Si } from "react-icons/si";
 import { motion } from 'framer-motion';
 import { SiGithub, SiTwitter, SiLinkedin, SiGmail, SiInstagram } from "react-icons/si";
 import { AnimatePresence } from "framer-motion";
@@ -56,7 +56,6 @@ const catImages = [
     '/cat/judging.png',
     '/cat/myGod.png',
     '/cat/run.png',
-    // Add more cat images if you want
 ];
 const catImageStyles = [
     //relexing
@@ -714,7 +713,7 @@ z"
                                 }}
                             >
 
-                                <tspan x={2000} y={1968}>•Full Stack Developer </tspan>
+                                <tspan x={2000} y={1968}>•backend Developer </tspan>
                                 <tspan x={2000} dy="22"> at Semicolon Solution, Surat</tspan>
 
                                 <tspan x={2000} y={2018}>•Part-time mathematics teacher  </tspan>
@@ -785,7 +784,7 @@ z"
 
                                 <tspan x={2600} y={712}>• Bechalor of Engineering from   </tspan>
                                 <tspan x={2600} dy="22">vishwakarma govt engg college</tspan>
-                                <tspan x={2600} y={757}>• CGPA : 7.41  </tspan>
+                                <tspan x={2600} y={757}>• CGPA : 7.53  </tspan>
 
                             </motion.text>
                         </g>
